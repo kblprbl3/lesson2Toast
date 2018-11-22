@@ -1,5 +1,6 @@
 package com.example.albert.lesson2toast;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.content.DialogInterface;
@@ -18,7 +19,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private EditText pass;
-    private Button btn,btn_alert;
+    private Button btn,btn_alert, act_change;
     private RatingBar rating;
     private TextView text_show;
 
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         pass = (EditText)findViewById(R.id.editText);
         btn = (Button)findViewById(R.id.button);
         btn_alert = (Button)findViewById(R.id.alert);
+        act_change = (Button)findViewById(R.id.act_change);
         btn.setOnClickListener(
                 new View.OnClickListener() {
                     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -49,17 +51,28 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
 
-        rating = (RatingBar)findViewById(R.id.ratingBar);
-        text_show = (TextView)findViewById(R.id.textView);
-
-        rating.setOnRatingBarChangeListener(
-                new RatingBar.OnRatingBarChangeListener() {
+        //Переход след-му страницу
+        act_change.setOnClickListener(
+                new View.OnClickListener() {
                     @Override
-                    public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                        text_show.setText("Значение " + String.valueOf(rating));
+                    public void onClick(View v) {
+                        Intent intent = new Intent(".SecondActivity");
+                        startActivity(intent);
                     }
                 }
         );
+//      Рейтинг бар
+//        rating = (RatingBar)findViewById(R.id.ratingBar);
+//        text_show = (TextView)findViewById(R.id.textView);
+//
+//        rating.setOnRatingBarChangeListener(
+//                new RatingBar.OnRatingBarChangeListener() {
+//                    @Override
+//                    public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+//                        text_show.setText("Значение " + String.valueOf(rating));
+//                    }
+//                }
+//        );
 
 
         btn_alert.setOnClickListener(
